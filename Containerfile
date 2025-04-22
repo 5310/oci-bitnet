@@ -15,4 +15,6 @@ RUN cmake --build build --target llama-cli --config Release
 
 COPY ggml-model-i2_s.gguf .
 
-CMD ["python3", "run_inference.py", "-m", "ggml-model-i2_s.gguf", "-p", "The meaning to life and the universe is"]
+ENTRYPOINT ["python3", "run_inference.py", "-m", "ggml-model-i2_s.gguf"]
+
+CMD ["-cnv", "-p", "You are a conversational AI. Help the user any way you can."]
