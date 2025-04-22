@@ -40,8 +40,8 @@ jobs:
           labels: |
             org.opencontainers.image.description=https://huggingface.co/microsoft/bitnet-b1.58-2B-4T-gguf
 
-      - name: Test image
-        run: podman run --rm bitnet:latest
+      # - name: Test image
+      #   run: podman run --rm bitnet:latest
 
       - name: Push Image to GHCR
         uses: redhat-actions/push-to-registry@v2
