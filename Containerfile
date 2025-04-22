@@ -18,3 +18,7 @@ COPY ggml-model-i2_s.gguf .
 ENTRYPOINT ["python3", "run_inference.py", "-m", "ggml-model-i2_s.gguf"]
 
 CMD ["-cnv", "-p", "You are a conversational AI. Help the user any way you can."]
+
+LABEL RUN='podman run --rm ${IMAGE}'
+LABEL RUN_W_CUSTOM_ARGS='podman run --rm ${IMAGE}	<your arguments> -p "<your prompt>'
+LABEL RUN_FULLY_CUSTOM='podman run --rm -it -v /some/host/path:/BitNet/models ${IMAGE} --entrypoint sh'
