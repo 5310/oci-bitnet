@@ -1,16 +1,18 @@
-Simple Docker image to run [BitNet](https://github.com/microsoft/BitNet) large language models. Uses CPU for inference. Includes [bitnet-b1.58-2B-4T](https://huggingface.co/microsoft/bitnet-b1.58-2B-4T-gguf) by default. Requires CPU with AVX2 support from Intel Haswell/AMD Excavator or later generations.
+> Forked from https://github.com/kth8/bitnet/
+
+Simple OCI container image to run [BitNet](https://github.com/microsoft/BitNet) large language models. Uses CPU for inference. Includes [bitnet-b1.58-2B-4T](https://huggingface.co/microsoft/bitnet-b1.58-2B-4T-gguf) by default. Requires CPU with AVX2 support from Intel Haswell/AMD Excavator or later generations.
+
+To run the built-in model conversationally:
 ```
-docker run --rm ghcr.io/kth8/bitnet
+podman run --rm ghcr.io/kth8/bitnet
 ```
-to use your own arguments, enter using shell:
+To use your own arguments with the built-in model:
 ```
-docker run --rm -it ghcr.io/kth8/bitnet sh
-python3 run_inference.py --help
-python3 run_inference.py -m ggml-model-i2_s.gguf <your arguments> -p "<your prompt>"
+podman run --rm ghcr.io/kth8/bitnet <your arguments> -p "<your prompt>"
 ```
-to use your own model, mount a volume from the host:
+To use your own model, mount a volume from the host:
 ```
-docker run --rm -it -v /some/host/path:/BitNet/models ghcr.io/kth8/bitnet sh
+podman run --rm -it -v /some/host/path:/BitNet/models ghcr.io/kth8/bitnet --entrypoint sh
 python3 run_inference.py -m models/<your model>.gguf <your arguments> -p "<your prompt>"
 ```
 Check if your CPU supports AVX2 on Linux:
