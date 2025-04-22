@@ -4,15 +4,15 @@ Simple OCI container image to run [BitNet](https://github.com/microsoft/BitNet) 
 
 To run the built-in model conversationally:
 ```
-podman run --rm ghcr.io/5310/oci-bitnet
+podman run --rm ghcr.io/5310/bitnet
 ```
 To use your own arguments with the built-in model:
 ```
-podman run --rm ghcr.io/5310/oci-bitnet <your arguments> -p "<your prompt>"
+podman run --rm ghcr.io/5310/bitnet <your arguments> -p "<your prompt>"
 ```
 To use your own model, mount a volume from the host:
 ```
-podman run --rm -it -v /some/host/path:/BitNet/models ghcr.io/5310/oci-bitnet --entrypoint sh
+podman run --rm -it -v /some/host/path:/BitNet/models ghcr.io/5310/bitnet --entrypoint sh
 python3 run_inference.py -m models/<your model>.gguf <your arguments> -p "<your prompt>"
 ```
 Check if your CPU supports AVX2 on Linux:
